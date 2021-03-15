@@ -2,4 +2,3 @@
 * See if the modulos will be taken from the individual test files, or if will be take from
   the 'TODOS.txt' in the future tests.
 * Automate creation of the box plots.
-* Automate creation of the statistical analysis, and plan a practical way to export for use in the report

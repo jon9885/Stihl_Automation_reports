@@ -1,0 +1,4 @@
+* Separate functions to a file to import.
+* See if the modulos will be taken from the individual test files, or if will be take from
+  the 'TODOS.txt' in the future tests.
+* Automate creation of the box plots.

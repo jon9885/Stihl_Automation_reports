@@ -44,11 +44,9 @@ flag_todos = 'todos.txt' in [file.lower().strip() for file in files]
 files[:] = [os.path.join(mydirectory, x)
             for x in files if 'todos.txt' not in x.lower()]
 
-
-replace_commas('todos.txt')
-lines_to_read = list(range(12+len(files), 12+2*len(files)))
-
 if flag_todos:
+    replace_commas('todos.txt')
+    lines_to_read = list(range(12+len(files), 12+2*len(files)))
     elastic_modulos = {}
     YS1 = {}
     with open('todos.txt', 'r') as f:

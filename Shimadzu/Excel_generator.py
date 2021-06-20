@@ -2,7 +2,11 @@ import re
 import glob
 import os
 import pandas as pd
+import matplotlib
 # %%
+
+#color_list = list(matplotlib.colors.cnames.values())
+color_list = list(matplotlib.colors.TABLEAU_COLORS.values())
 
 
 def float_generator(s):
@@ -67,6 +71,7 @@ table_name = os.path.split(mydirectory)[-1]
 writer = pd.ExcelWriter(os.path.join(
     mydirectory, table_name+'.xlsx'), engine='xlsxwriter')
 workbook = writer.book
+color_count = 0
 
 for file in files:
 
@@ -144,9 +149,9 @@ for file in files:
         'name': filename.split('.')[0],
         'categories': [filename.split('.')[0], 13, 5, len(df)+11, 5],
         'values': [filename.split('.')[0], 13, 4, len(df)+11, 4],
-        'line': {'width': 2.0},
+        'line': {'width': 2.0, 'color': color_list[color_count]},
     })
-
+    color_count = color_count+1
     # Find index of 2% of deformation
     idx_2_pct = pd.to_numeric((df['Deformação'][1:]-2).abs()).idxmin()
 
@@ -154,7 +159,7 @@ for file in files:
         'name': filename.split('.')[0],
         'categories': [filename.split('.')[0], 13, 5, idx_2_pct+11, 5],
         'values': [filename.split('.')[0], 13, 4, idx_2_pct+11, 4],
-        'line': {'width': 2.0},
+        'line': {'width': 2.0, 'color': color_list[color_count]},
     })
 
     # -- Write the summary of the table
